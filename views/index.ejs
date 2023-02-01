@@ -7,14 +7,22 @@
     <title>Book Index Page</title>
   </head>
   <body>
-    <h1>Book List</h1>
+    <h1>Hi! Welcome <% if(currentUser){%><%= currentUser.username %> <%} %> to your Book List</h1>
     <ul>
       <% for(let i=0;i<books.length;i++) {%>
         <li>
          <a href="/books/<%=books[i].id %>"> <%= books[i].title %></a>
+         <a href="/books/<%=books[i].id %>/edit"><button>EDIT</button></a>
+         <form action="/books/<%=books[i].id %>?_method=DELETE" method="POST" style="display: inline;">
+          <input type="submit" value="DELETE"></form>
         </li><br/>
         <%}%> 
+       
     </ul>
+    
     <a href="/books/new">Add more books!</a>
+    <form action="/sessions?_method=DELETE" method="POST">
+      <input type="submit" value="Logout" />
+    </form>
   </body>
 </html>

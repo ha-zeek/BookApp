@@ -1,11 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const session = require("express-session");
 
 require("dotenv").config();
 const app = express();
 
 app.set("view engine", "ejs");
+
+// SESSION SECRET MIDDLEWARE //
+app.use(
+  session({
+    secret: "somerandomstring",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 const port = process.env.PORT || 3000;
 
@@ -35,56 +45,18 @@ db.on("disconnected", () => {
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
-// const books = require("./model/books.js");
-const book = require("./model/book_schema.js");
-
 app.get("/", (req, res) => {
-  res.redirect("/books");
+  res.render("auth/auth_index.ejs", { currentUser: req.session.currentUser });
 });
 
-// to load new/add books form
-app.get("/books/new", (req, res) => {
-  res.render("new.ejs");
-});
+// IMPORT CONTROLLER //
+const bookController = require("./controllers/book_controller.js");
+const userController = require("./controllers/user_controller.js");
+const sessionController = require("./controllers/session_controller.js");
 
-// to create the new books
-app.post("/books", (req, res) => {
-  if (req.body.recommended === "on") {
-    req.body.recommended = true;
-  } else {
-    req.body.recommended = false;
-  }
-  // inserting books details into Mongo DB
-  book.create(req.body, (err, createdBook) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.redirect("/books");
-    }
-  });
-});
-
-// routes for index books
-app.get("/books", (req, res) => {
-  book.find({}, (err, booksDetails) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("index.ejs", { books: booksDetails });
-    }
-  });
-});
-
-app.get("/books/:id", (req, res) => {
-  book.findById(req.params.id, (err, foundBook) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // res.send(foundBook);
-      res.render("view.ejs", { book: foundBook });
-    }
-  });
-});
+app.use("/books", bookController);
+app.use("/user", userController);
+app.use("/sessions", sessionController);
 
 app.listen(port, () => {
   console.log("App is listening on port: " + port);
