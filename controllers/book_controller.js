@@ -9,7 +9,7 @@ const book = require("../model/book_schema.js");
 
 // to load new/add books form
 router.get("/new", (req, res) => {
-  res.render("new.ejs");
+  res.render("new.ejs", { currentUser: req.session.currentUser });
 });
 
 // to create the new books
@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
 
 // routes for index books
 router.get("/", (req, res) => {
-  book.find({}, (err, booksDetails) => {
+  book.find({ userid: req.session.currentUser.username }, (err, booksDetails) => {
     if (err) {
       console.log(err);
     } else {
@@ -63,37 +63,58 @@ router.get("/seed", (req, res) => {
       {
         title: "Harry Potter & the Philosopher's Stone",
         author: "JK Rowling",
+        genre: "fantasy",
+        pages: 200,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Harry Potter & Chamber of Secrets",
         author: "JK Rowling",
+        genre: "fantasy",
+        pages: 200,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Harry Potter & Prisoner of Azkaban",
         author: "JK Rowling",
+        genre: "fantasy",
+        pages: 200,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Atomic Habits",
         author: "James Clear",
+        genre: "self help",
+        pages: 300,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Percy Jackson & The Lightning Thief",
         author: "Rick Riordan",
+        genre: "fantasy",
+        pages: 200,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Percy Jackson & Sea of Monsters",
         author: "Rick Riordan",
+        genre: "fantasy",
+        pages: 200,
         recommended: true,
+        userid: "Haziq",
       },
       {
         title: "Psychology of Money",
         author: "Morgan Housel",
+        genre: "self help",
+        pages: 200,
         recommended: false,
+        userid: "Haziq",
       },
     ],
     (err, success) => {
@@ -114,7 +135,10 @@ router.get("/:id", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("view.ejs", { book: foundBook });
+      res.render("view.ejs", {
+        book: foundBook,
+        // currentUser: req.session.currentUser,
+      });
     }
   });
 });

@@ -45,10 +45,6 @@ db.on("disconnected", () => {
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.render("auth/auth_index.ejs", { currentUser: req.session.currentUser });
-});
-
 // IMPORT CONTROLLER //
 const bookController = require("./controllers/book_controller.js");
 const userController = require("./controllers/user_controller.js");
@@ -58,6 +54,14 @@ app.use("/books", bookController);
 app.use("/user", userController);
 app.use("/sessions", sessionController);
 
+app.get("/", (req, res) => {
+  res.render("index.ejs", {
+    currentUser: req.session.currentUser,
+  });
+});
+
+
 app.listen(port, () => {
   console.log("App is listening on port: " + port);
 });
+
