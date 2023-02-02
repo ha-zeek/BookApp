@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Book Details</title>
+    <%-include("../partials/bootstrap.ejs") %>
+    <style>
+      .editBooks {
+        font-family: "Playfair Display", serif;
+        font-weight: 550px;
+        color: white;
+      }
+      input[type="text"] {
+        width: 400px;
+      }
+      input[type="number"] {
+        width: 80px;
+      }
+      .update {
+        font-size: 1.2em;
+      }
+    </style>
   </head>
   <body>
-    <h1>Edit Book Details</h1>
-    <form action="/books/<%= book.id %>?_method=PUT" method="POST">
-      Title: <input type="text" name="title" value="<%= book.title %>" />
-      <br />
-      Author: <input type="text" name="author" value="<%= book.author %>" />
-      <br />
-      Recommended: <input type="checkbox" name="recommended"
-      <%if(book.recommended === true ){%>checked<%} %> />
-      <br />
-      <input type="submit" value="Update Book" />
-    </form>
+    <br /><br />
+    <h1 class="text-center">Book App</h1>
+    <h2>Editing Book Details</h2>
+    <div class="text-center editBooks">
+      <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+        Title: <input type="text" name="title" value="<%= book.title %>" />
+        <br /><br />
+        Author: <input type="text" name="author" value="<%= book.author %>" />
+        <br /><br />
+        Genre: <input type="text" name="genre" value="<%= book.genre %>" />
+        <br /><br />
+        Pages: <input type="number" name="pages" value="<%= book.pages %>" />
+        <br /><br />
+        Recommended: <input type="checkbox" name="recommended"
+        <%if(book.recommended === true ){%>checked<%} %> />
+        <br /><br /><br />
+        <input class="update" type="submit" value="Update Book" />
+      </form>
+    </div>
   </body>
 </html>

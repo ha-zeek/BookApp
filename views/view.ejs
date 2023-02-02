@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Books Collection</title>
+    <%-include("../partials/bootstrap.ejs") %>
+    <style>
+      h3 {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        color: white;
+        font-size: 2em;
+      }
+      p {
+        font-family: "Playfair Display", serif;
+        color: white;
+      }
+      .anchor {
+        color: white;
+        font-family: "Playfair Display", serif;
+        font-size: 1.5em;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Books Collection Details</h1>
-    <h2><%= book.title %></h2>
+  <body class="text-center">
+    <br /><br />
+    <h1 class="text-center">Book App</h1>
+    <h2>Book Details</h12>
+    <br /><br />
+    <h3><%= book.title %></h3>
     <p>
       Author: <%= book.author %><br />
-      It is <% if(!book.recommended){%>not<%} %> recommeded to read.
+      Genre: <%= book.genre %> <br />
+      Pages: <%= book.pages %> <br />
+      Recommended: <% if(book.recommended){%>Yes<%}else{%>No<%} %>
     </p>
-    <a href="/books">Back to Book Collections</a>
+    <br /><br />
+    <a class="anchor text-center" href="/books">Back to Book Collections</a>
   </body>
 </html>

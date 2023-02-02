@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book Index Page</title>
+   <%-include("../partials/bootstrap.ejs")   %> 
+ <style>
+  ul{
+    list-style-type :none
+  }
+  .anchor{
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: 1.5em;
+  }
+  .eD{
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+  }
+ </style>
   </head>
-  <body>
-    <h1>Welcome <% if(currentUser){%><%= currentUser.username %> <%} %></h1>
-    <ul>
+  <body><br><br>
+    <header id="image-background">
+      <div class="logo"></div>
+    </header>
+    <h1 class="text-center ">Book App</h1>
+    <h2 class="text-center ">An app to keep track of all your books!</h2>
+    <br><br>
+    <ul >
       <% if(currentUser){%>
-
-        <ul>
-          <% for(let i=0;i<books.length;i++) {%>
-            <li>
-             <a href="/books/<%=books[i].id %>"> <%= books[i].title %></a>
-             <a href="/books/<%=books[i].id %>/edit"><button>EDIT</button></a>
-             <form action="/books/<%=books[i].id %>?_method=DELETE" method="POST" style="display: inline;">
-              <input type="submit" value="DELETE"></form>
-            </li><br/>
-            <%}%> 
-           
-        </ul>
         
-        <a href="/books/new">Add more books!</a>
+          <% for(let i=0;i<books.length;i++) {%>
+            <div class="text-center">
+            <li >
+             <a class="anchor" href="/books/<%=books[i].id %>"> <%= books[i].title %></a><br> 
+             <a href="/books/<%=books[i].id %>/edit"><button class="eD">EDIT</button></a>
+             <form action="/books/<%=books[i].id %>?_method=DELETE" method="POST" style="display: inline;">
+              <input class="eD" type="submit" value="DELETE"></form>
+            </li><br/>
+          </div>
+            <%}%> 
+        <br><br>
+        <div class="text-center">
+        <a class="anchor" href="/books/new">Add more books to your list!</a>
       <form action="/sessions?_method=DELETE" method="POST">
-        <input type="submit" value="Logout" />
+        <input class="eD" type="submit" value="LOGOUT" />
       </form>
+      </div>
       <%} else{%>
-      <li>
-        <a href="/sessions/new">Login</a>
-      </li>
-      <li>
-        <a href="/user/new">Sign Up </a>
-      </li>
+        <br><br><br>
+        <div class=" button text-center">
+        <a href="/sessions/new"><button class="btn btn-light" type="button">LOGIN</button></a> 
+        <a href="/user/new"><button class="btn btn-light"  type="button">SIGN UP</button></a>
+    </div>
       <%}%>
     
   

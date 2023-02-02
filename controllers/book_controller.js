@@ -31,16 +31,19 @@ router.post("/", (req, res) => {
 
 // routes for index books
 router.get("/", (req, res) => {
-  book.find({ userid: req.session.currentUser.username }, (err, booksDetails) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("index.ejs", {
-        books: booksDetails,
-        currentUser: req.session.currentUser,
-      });
+  book.find(
+    { userid: req.session.currentUser.username },
+    (err, booksDetails) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("index.ejs", {
+          books: booksDetails,
+          currentUser: req.session.currentUser,
+        });
+      }
     }
-  });
+  );
 });
 
 // DELETE ////////////////////////////////////////////////

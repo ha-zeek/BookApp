@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include("../partials/bootstrap.ejs") %>
+    <style>
+      .createUser {
+        font-family: "Playfair Display", serif;
+        font-weight: bold;
+        color: white;
+      }
+      .createBtn {
+        font-family: "Playfair Display", serif;
+      }
+    </style>
+  </head>
+  <body>
+    <br /><br />
+    <h1 class="text-center">Book App</h1>
+    <h2 class="createUser text-center">Create User Page</h2>
+    <br /><br />
+    <div class="text-center">
+      <form action="/user" method="POST">
+        <input
+          type="text"
+          name="username"
+          placeholder="User Name"
+          required
+        /><br /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        /><br /><br />
+        <input class="createBtn" type="submit" value="Create User" />
+      </form>
+    </div>
+  </body>
+</html>
