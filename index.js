@@ -7,6 +7,7 @@ require("dotenv").config();
 const app = express();
 
 app.set("view engine", "ejs");
+app.use(express.static("public")); // initialize public folder as static
 
 // SESSION SECRET MIDDLEWARE //
 app.use(
