@@ -13,7 +13,7 @@ Book App is a type of a book tracking app. It helps user in listing the collecti
 1. Express
 1. CSS
 1. EJS Partial
-1. Bootstrap 5
+1. Tailwind CSS
 1. MongoDB
 1. Render
 
