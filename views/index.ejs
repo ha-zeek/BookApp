@@ -2,50 +2,62 @@
 <html lang="en">
   <head>
    <%-include("../partials/bootstrap.ejs")   %> 
- <style>
-  ul{
-    list-style-type :none
-  }
-  .anchor{
-    color: white;
-    font-family: "Playfair Display", serif;
-    font-size: 1.5em;
-  }
-  .eD{
-    font-family: "Playfair Display", serif;
-    font-weight: 600;
-  }
- </style>
   </head>
-  <body><br><br>
-    <h1 class="text-center ">Book App</h1>
-    <h2 class="text-center ">An app to keep track of all your books!</h2>
+  <body>
+    <div class="mt-5 pt-4">
+      <h1 class="text-center text-3xl font-serif font-semibold">Book App</h1>
+      <h2 class="text-center text-2xl font-serif ">An app to keep track of all your books!</h2>
+    </div>
+    
     <br><br>
-    <ul >
-      <% if(currentUser){%>
-        
-          <% for(let i=0;i<books.length;i++) {%>
-            <div class="text-center">
-            <li >
-             <a class="anchor" href="/books/<%=books[i].id %>"> <%= books[i].title %></a><br> 
-             <a href="/books/<%=books[i].id %>/edit"><button class="eD">EDIT</button></a>
-             <form action="/books/<%=books[i].id %>?_method=DELETE" method="POST" style="display: inline;">
-              <input class="eD" type="submit" value="DELETE"></form>
-            </li><br/>
-          </div>
-            <%}%> 
-        <br><br>
-        <div class="text-center">
-        <a class="anchor" href="/books/new">Add more books to your list!</a>
-      <form action="/sessions?_method=DELETE" method="POST">
-        <input class="eD" type="submit" value="LOGOUT" />
-      </form>
-      </div>
+    <div class="flex justify-center items-center">
+      <ul class="space-y-4 " >
+        <% if(currentUser){%>
+
+          <div class="text-center justify-items-center "></div>
+              <% for(let i=0;i<books.length;i++) {%>
+                <div>
+                  <li class="mb-3">
+                  <a class="text-white font-serif text-xl mb-2 " href="/books/<%=books[i].id %>"> 
+                    <%= books[i].title %>
+                  </a>
+
+          
+                  <a href="/books/<%=books[i].id %>/edit" >
+                    <button class="text-white font-mono ml-3 bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                      EDIT
+                    </button>
+                  </a>
+                    <form action="/books/<%=books[i].id %>?_method=DELETE" method="POST" style="display: inline;">
+                      <input class="text-white font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" value="DELETE">
+                    </form>
+                  </li>
+                </div>
+              <%}%> 
+            </div>
+          
+      </ul>
+  </div>
+    <div class="text-center">
+        <a class="text-white font-serif hover:text-slate-400" href="/books/new">Add more books to your list!</a>
+          <form action="/sessions?_method=DELETE" method="POST">
+            <input class="text-white mt-3 font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" type="submit" value="LOGOUT" />
+          </form>
+    </div>
+     
       <%} else{%>
+      <div>
         <br><br><br>
-        <div class=" button text-center">
-        <a href="/sessions/new"><button class="btn btn-light" type="button">LOGIN</button></a> 
-        <a href="/user/new"><button class="btn btn-light"  type="button">SIGN UP</button></a>
+        <div>
+        <a href="/sessions/new"><button 
+          class="text-white font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+          type="button">
+          LOGIN</button>
+        </a> 
+        <a href="/user/new"><button class="text-white font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" 
+          type="button">
+          SIGN UP</button>
+        </a>
     </div>
       <%}%>
     

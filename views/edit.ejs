@@ -1,43 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%-include("../partials/bootstrap.ejs") %>
-    <style>
-      .editBooks {
-        font-family: "Playfair Display", serif;
-        font-weight: 550px;
-        color: white;
-      }
-      input[type="text"] {
-        width: 400px;
-      }
-      input[type="number"] {
-        width: 80px;
-      }
-      .update {
-        font-size: 1.2em;
-      }
-    </style>
-  </head>
-  <body>
-    <br /><br />
-    <h1 class="text-center">Book App</h1>
-    <h2>Editing Book Details</h2>
-    <div class="text-center editBooks">
-      <form action="/books/<%= book.id %>?_method=PUT" method="POST">
-        Title: <input type="text" name="title" value="<%= book.title %>" />
-        <br /><br />
-        Author: <input type="text" name="author" value="<%= book.author %>" />
-        <br /><br />
-        Genre: <input type="text" name="genre" value="<%= book.genre %>" />
-        <br /><br />
-        Pages: <input type="number" name="pages" value="<%= book.pages %>" />
-        <br /><br />
-        Recommended: <input type="checkbox" name="recommended"
-        <%if(book.recommended === true ){%>checked<%} %> />
-        <br /><br /><br />
-        <input class="update" type="submit" value="Update Book" />
-      </form>
-    </div>
-  </body>
+	<head>
+		<%-include("../partials/bootstrap.ejs") %>
+	</head>
+	<body>
+		<br /><br />
+		<div class="mt-5 pt-4">
+			<h1 class="text-center text-3xl font-serif font-semibold">Book App</h1>
+			<h2 class="text-center text-2xl font-serif">Edit Book Details</h2>
+		</div>
+
+		<br />
+		<br />
+		<div class="flex text-center justify-center w-auto text-white font-serif">
+			<form action="/books/<%= book.id %>?_method=PUT" method="POST">
+				Title:
+				<input
+					class="bg-gray-200 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="text"
+					name="title"
+					value="<%= book.title %>" />
+				<br />
+				Author:
+				<input
+					class="bg-gray-200 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="text"
+					name="author"
+					value="<%= book.author %>" />
+				<br />
+				Genre:
+				<input
+					class="bg-gray-200 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="text"
+					name="genre"
+					value="<%= book.genre %>" />
+				<br />
+				Pages:
+				<input
+					class="bg-gray-200 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="number"
+					name="pages"
+					value="<%= book.pages %>" />
+				<br />
+				Recommended: <input class="bg-gray-200 border mb-3 border-gray-300
+				text-gray-900 text-sm rounded-lg focus:ring-blue-500
+				focus:border-blue-500 block w-full p-2.5" type="checkbox"
+				name="recommended" <%if(book.recommended === true ){%>checked<%} %> />
+
+				<input
+					class="text-white mt-4 font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+					type="submit"
+					value="Update Book" />
+			</form>
+		</div>
+	</body>
 </html>

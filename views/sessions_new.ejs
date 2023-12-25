@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%-include("../partials/bootstrap.ejs") %>
-    <style>
-      .userLogin {
-        font-family: "Playfair Display", serif;
-        font-weight: bold;
-        color: white;
-      }
-      .loginBtn {
-        font-family: "Playfair Display", serif;
-      }
-    </style>
-  </head>
-  <body>
-    <br /><br />
-    <h1 class="text-center">Book App</h1>
-    <h2 class="userLogin text-center">User Login</h2>
-    <br /><br />
-    <div class="text-center">
-      <form action="/sessions" method="POST">
-        <input
-          type="text"
-          name="username"
-          placeholder="User Name"
-          required
-        /><br /><br />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        /><br /><br />
-        <input class="loginBtn" type="submit" value="Login" />
-      </form>
-    </div>
-  </body>
+	<head>
+		<%-include("../partials/bootstrap.ejs") %>
+	</head>
+	<body>
+		<div class="mt-5 pt-4">
+			<h1 class="text-center text-3xl font-serif font-semibold">Book App</h1>
+			<h2 class="text-center text-2xl font-serif">
+				An app to keep track of all your books!
+			</h2>
+		</div>
+		<br /><br />
+		<div class="flex text-center justify-center">
+			<form action="/sessions" method="POST">
+				<input
+					class="bg-gray-200 border mb-3 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="text"
+					name="username"
+					placeholder="Username"
+					required />
+				<input
+					class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+					type="password"
+					name="password"
+					placeholder="Password"
+					required /><br /><br />
+				<input
+					class="text-white font-mono bg-slate-700 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+					type="submit"
+					value="Login" />
+			</form>
+		</div>
+	</body>
 </html>

@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%-include("../partials/bootstrap.ejs") %>
-    <style>
-      h3 {
-        text-align: center;
-        font-family: "Playfair Display", serif;
-        color: white;
-        font-size: 2em;
-      }
-      p {
-        font-family: "Playfair Display", serif;
-        font-size: 1.2em;
-        text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
-        color: white;
-      }
-      .anchor {
-        color: white;
-        font-family: "Playfair Display", serif;
-        font-size: 1.5em;
-      }
-    </style>
-  </head>
-  <body class="text-center">
-    <br /><br />
-    <h1 class="text-center">Book App</h1>
-    <h2>Book Details</h12>
-    <br /><br />
-    <h3><%= book.title %></h3>
-    <p>
-      Author: <%= book.author %><br />
-      Genre: <%= book.genre %> <br />
-      Pages: <%= book.pages %> <br />
-      Recommended: <% if(book.recommended){%>Yes<%}else{%>No<%} %>
-    </p>
-    <br /><br />
-    <a class="anchor text-center" href="/books">Back to Book Collections</a>
-  </body>
+	<head>
+		<%-include("../partials/bootstrap.ejs") %>
+	</head>
+	<body class="text-center">
+		<br /><br />
+		<div class="mt-5 pt-4">
+			<h1 class="text-center text-3xl font-serif font-semibold">Book App</h1>
+			<h2 class="text-center text-2xl font-serif">Details</h2>
+		</div>
+		<br /><br />
+		<div class="text-white font-serif">
+			<h3 class="text-2xl"><%= book.title %></h3>
+			<br />
+			<p class="text-lg">
+				Author: <%= book.author %><br />
+				Genre: <%= book.genre %> <br />
+				Pages: <%= book.pages %> <br />
+				Recommended: <% if(book.recommended){%>Yes<%}else{%>No<%} %>
+			</p>
+		</div>
+		<br /><br />
+		<a
+			class="text-white font-serif text-center hover:text-slate-400"
+			href="/books"
+			>Back to Book Collections</a
+		>
+	</body>
 </html>
