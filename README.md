@@ -18,7 +18,8 @@ Book App is a type of a book tracking app. It helps user in listing the collecti
 1. Render
 
 ## Link for BookApp
-[BookApp](https://bookapp-bjot.onrender.com)
+
+[BookApp](https://peach-jaguar-wig.cyclic.app/)
 
 ## Future additions
 
