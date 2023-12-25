@@ -25,6 +25,5 @@ Book App is a type of a book tracking app. It helps user in listing the collecti
 
 1. adding google books API for more information
 1. making a search bar to search books via google books api
-1. use more of Bootstrap5
 1. adding images of the book when viewing book details.
 1. adding suggestion to similar books/ similar genre
